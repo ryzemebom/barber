@@ -1,0 +1,303 @@
+/* ====== RESET ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+body {
+    background: #f0f4f8;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== SIDEBAR ======*/
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(135deg, #2c5364, #203a43);
+    color: #fff;
+    padding: 25px 15px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid #0f2027;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: #f0f4f7;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+.sidebar a {
+    display: block;
+    color: #d1e2e7;
+    text-decoration: none;
+    margin: 12px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.sidebar a:hover {
+    background: #203a43;
+    color: #fff;
+}
+
+/* ====== CONTEÚDO PRINCIPAL ====== */
+.main-content {
+    margin-left: 240px;
+    padding: 25px;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    color: #2c5364;
+}
+
+/* ====== FORMULÁRIOS ====== */
+form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+form label {
+    font-weight: 600;
+    color: #2c5364;
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+form input:focus, form select:focus {
+    border-color: #2c5364;
+    outline: none;
+    box-shadow: 0 0 8px rgba(44,83,100,0.3);
+}
+
+form button {
+    background: #0f2027;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background: #a67c52;
+    transform: translateY(-2px);
+}
+
+/* ====== TABELAS ====== */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.table th {
+    background: #2c5364;
+    color: #fff;
+    font-weight: 600;
+}
+
+.table tr:hover {
+    background: #eef5f7;
+    transition: 0.2s;
+}
+
+/* Responsividade para tabelas */
+@media (max-width: 768px) {
+    .table, .table thead, .table tbody, .table th, .table td, .table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        background: #fff;
+    }
+
+    .table td {
+        padding: 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #2c5364;
+    }
+}
+
+/* ====== BOTÕES ====== */
+.btn {
+    display: inline-block;
+    background: #c69c6d;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: #203a43;
+    transform: translateY(-2px);
+}
+
+.btn-edit {
+    background: #2c5364;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-right: 8px;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.btn-edit:hover {
+    background: #203a43;
+}
+
+.btn-delete {
+    background: #0f2027;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background: #203a43;
+}
+
+/* ====== CARDS ====== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    margin-bottom: 8px;
+    color: #c69c6d;
+}
+
+/* ====== FOOTER ====== */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* ====== LOGIN ====== */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ background-color:#0f2027;
+}
+
+.login-container {
+
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 620px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #0f2027;
+}
+
+.login-form input {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.login-form input:focus {
+    border-color: #0f2027;
+    outline: none;
+    box-shadow: 0 0 8px rgba(198,156,109,0.5);
+}
+
+.login-form button {
+    width: 100%;
+    background-color: 0f2027;
+    margin-top: 15px;
+}
+
+
+

@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "nome": "Corte de Cabelo ",
+        "duracao": 25,
+        "preco": 25.9
+    },
+    {
+        "id": 2,
+        "nome": "Arthur",
+        "duracao": 22,
+        "preco": 58
+    }
+]
