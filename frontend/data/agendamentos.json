@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "id": 1,
+        "clienteId": "2",
+        "clienteNome": "Julio",
+        "servicoId": "1",
+        "servico": "Corte de Cabelo ",
+        "preco": 25.9,
+        "dataHora": "0121-02-06T21:59",
+        "pago": true
+    },
+    {
+        "id": 2,
+        "clienteId": "4",
+        "clienteNome": "testes",
+        "servicoId": "1",
+        "servico": "Corte de Cabelo ",
+        "preco": 25.9,
+        "dataHora": "0012-02-21T05:51",
+        "pago": false
+    },
+    {
+        "id": 3,
+        "clienteId": "5",
+        "clienteNome": "Antonio",
+        "servicoId": "2",
+        "servico": "Arthur",
+        "preco": 58,
+        "dataHora": "3232-02-13T23:02",
+        "pago": false
+    }
+]

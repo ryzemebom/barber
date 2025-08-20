@@ -1,18 +1,5 @@
 <?php
-// Funções para ler e salvar JSON
-function lerJSON($arquivo) {
-    $caminho = __DIR__ . "/data/$arquivo";
-    if(!file_exists($caminho)) {
-        file_put_contents($caminho, json_encode([]));
-    }
-    $json = file_get_contents($caminho);
-    return json_decode($json, true);
-}
-
-function salvarJSON($arquivo, $dados) {
-    $caminho = __DIR__ . "/data/$arquivo";
-    file_put_contents($caminho, json_encode($dados, JSON_PRETTY_PRINT));
-}
+include 'functions.php';
 
 // Lista clientes
 $clientes = lerJSON("clientes.json");
@@ -44,11 +31,81 @@ if(isset($_GET['delete'])){
     <title>Clientes - Barbearia</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+thead {
+    background: #007bff;
+    color: #fff;
+}
+
+thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+tbody td {
+    padding: 12px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+/* Listrado */
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Hover */
+tbody tr:hover {
+    background: #f1f7ff;
+    transition: 0.2s;
+}
+        .btn-edit {
+            display: inline-flex;
+            align-items: center;
+            background: #1000a1ff;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .btn-edit:hover {
+            background: #0069d9;
+        }
+
+        .btn-delete {
+            display: inline-flex;
+            align-items: center;
+            background: #970a18ff;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
         .btn-whatsapp {
             display: inline-flex;
             align-items: center;
-            background: #25D366;
-            padding: 5px 10px;
+            background: #0b910dff;
+            padding: 8px 10px;
             border-radius: 6px;
             color: white;
             text-decoration: none;
@@ -86,7 +143,7 @@ if(isset($_GET['delete'])){
             <?php foreach($clientes as $c): ?>
                 <?php 
                     $telefone = $c['telefone'];
-                    $mensagem = urlencode("Olá " . $c['nome'] . ", seu horário na barbearia está confirmado!");
+                    $mensagem = urlencode("Olá " . $c['nome'] . ", seu horário na barbearia está confirmado! \n\n_Mensagem enviada automaticamente._");
                     $whatsappLink = "https://wa.me/55$telefone?text=$mensagem";
                 ?>
                 <tr>
@@ -94,8 +151,12 @@ if(isset($_GET['delete'])){
                     <td data-label="Nome"><?= $c['nome'] ?? 'N/A' ?></td>
                     <td data-label="Telefone"><?= $c['telefone'] ?? 'N/A' ?></td>
                     <td data-label="Ações">
-                        <a href="cliente_form.php?id=<?= $c['id'] ?>" class="btn-edit">Editar</a>
-                        <a href="cliente_delete.php?id=<?= $c['id'] ?>" class="btn-delete" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</a>
+                        <a href="cliente_form.php?id=<?= $c['id'] ?>" class="btn-edit">
+                            ✏️ Editar
+                        </a>
+                        <a href="cliente.php?delete=<?= $c['id'] ?>" class="btn-delete" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">
+                            🗑️ Excluir
+                        </a>
                         <?php if(!empty($c['telefone'])): ?>
                         <a href="<?= $whatsappLink ?>" target="_blank" class="btn-whatsapp">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> WhatsApp

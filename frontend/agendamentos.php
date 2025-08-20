@@ -79,51 +79,75 @@ if(isset($_GET['pago_id'])){
     <title>Agendamentos - Barbearia</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 0.95rem;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+thead {
+    background: #007bff;
+    color: #fff;
+}
+
+thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+tbody td {
+    padding: 12px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+/* Listrado */
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Hover */
+tbody tr:hover {
+    background: #f1f7ff;
+    transition: 0.2s;
+}
+     .btn-edit {
+            display: inline-flex;
+            align-items: center;
+            background: #1000a1ff;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .btn-edit:hover {
+            background: #0069d9;
         }
 
-        .table thead {
-            background-color: #203a43;
-            color: #fff;
+        .btn-delete {
+            display: inline-flex;
+            align-items: center;
+            background: #970a18ff;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            transition: 0.3s;
         }
-
-        .table th, .table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .btn-delete:hover {
+            background: #c82333;
         }
-
-        .table th {
-            font-weight: 600;
-        }
-
-        .table tr:nth-child(even) {
-            background-color: #f7f9fa;
-        }
-
-        .table tr:hover {
-            background-color: #e2f0f7;
-        }
-
-        .table thead th:first-child {
-            border-top-left-radius: 8px;
-        }
-        .table thead th:last-child {
-            border-top-right-radius: 8px;
-        }
-
-        .table td[data-label="Ações"] {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
         .btn-pago {
             display: inline-block;
             width: 170px;
@@ -144,7 +168,7 @@ if(isset($_GET['pago_id'])){
 
         .btn-pago.desmarcado {
             background-color: #dc3545; /* Vermelho */
-            width: 170px;
+            width: auto;
         }
 
         .btn-pago.desmarcado:hover {
@@ -190,12 +214,12 @@ if(isset($_GET['pago_id'])){
                     <td data-label="Preço">R$ <?= number_format($a['preco'] ?? 0, 2, ",", ".") ?></td>
                     <td data-label="Pago?"><?= isset($a['pago']) && $a['pago'] ? "Sim" : "Não" ?></td>
                     <td data-label="Ações">
-                        <a href="agendamento_form.php?id=<?= $a['id'] ?>" class="btn-edit">Editar</a>
-                        <a href="agendamentos.php?delete=<?= $a['id'] ?>" class="btn-delete" onclick="return confirm('Tem certeza que deseja excluir este agendamento?')">Excluir</a>
+                        <a href="agendamento_form.php?id=<?= $a['id'] ?>" class="btn-edit">✏️ Editar</a>
+                        <a href="agendamentos.php?delete=<?= $a['id'] ?>" class="btn-delete" onclick="return confirm('Tem certeza que deseja excluir este agendamento?')">🗑️ Excluir</a>
                         <a href="agendamentos.php?pago_id=<?= $a['id'] ?>" 
                            class="btn-pago <?= isset($a['pago']) && $a['pago'] ? 'desmarcado' : '' ?>" 
                            onclick="return confirm('Deseja alternar o status de pagamento?')">
-                            <?= isset($a['pago']) && $a['pago'] ? "Desmarcar pagamento" : "Marcar como pago" ?>
+                            <?= isset($a['pago']) && $a['pago'] ? "❌Desmarcar pagamento" : "✅Marcar como pago" ?>
                         </a>
                     </td>
                 </tr>

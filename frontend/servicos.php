@@ -46,6 +46,78 @@ if(!is_array($servicos)){
     <title>Serviços - Barbearia</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+<style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+thead {
+    background: #007bff;
+    color: #fff;
+}
+
+thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+tbody td {
+    padding: 12px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+/* Listrado */
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Hover */
+tbody tr:hover {
+    background: #f1f7ff;
+    transition: 0.2s;
+}
+      .btn-edit {
+            display: inline-flex;
+            align-items: center;
+            background: #1000a1ff;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .btn-edit:hover {
+            background: #0069d9;
+        }
+
+        .btn-delete {
+            display: inline-flex;
+            align-items: center;
+            background: #970a18ff;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .btn-delete:hover {
+            background: #c82333;
+        }
+</style>
+
 <body>
 <?php include "includes/header.php"; ?>
 

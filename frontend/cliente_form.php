@@ -95,18 +95,11 @@ function formatarTelefone(input) {
     // Remove tudo que não for número
     let numero = input.value.replace(/\D/g, '');
 
-    // Formata o número (99) 99999-9999
-    if(numero.length > 10){
-        numero = numero.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
-    } else if(numero.length > 5){
-        numero = numero.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-    } else if(numero.length > 2){
-        numero = numero.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-    } else {
-        numero = numero.replace(/^(\d*)/, '($1');
-    }
+    // Limita a 11 caracteres (ex: 11988887777)
+    numero = numero.substring(0, 11);
 
     input.value = numero;
 }
+
 </script>
 </html>
